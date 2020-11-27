@@ -1,4 +1,4 @@
-//Hej på dig
+
 const int clkPin = 2;
 const int DT = 4;
 const int encoderButt = 3;
