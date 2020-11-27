@@ -18,6 +18,6 @@ Serial.begin(9600);
 }
 
 void loop() {
-  Serial.print("Hej!\n");
+  Serial.println("Hej!");
   delay(1000);
 }
