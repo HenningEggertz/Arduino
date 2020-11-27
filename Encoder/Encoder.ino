@@ -1,12 +1,12 @@
 //Från början 224 bytes
 
-const int clkPin = 2;
-const int DT = 4;
-const int encoderButt = 3;
+volatile const char clkPin = 2;
+const char DT = 4;
+volatile const char encoderButt = 3;
 
 void setup() {
 //Sets inputs
-DDRD = ((0 << clkPin) | (0 << DT) | (0 << encoderButt)); // This pins are now inputs
+DDRD = ((0 << clkPin) | (0 << DT) | (0 << encoderButt)); // This pins are now inputs. this is just får visuabilty, they are by defualt set to 0.
 PORTD = ((1 << clkPin) | (1 << DT) | (1 << encoderButt)); //Sets the pins internal pullup resistors
 
 //External interupts
@@ -18,6 +18,6 @@ Serial.begin(9600);
 }
 
 void loop() {
-  Serial.print("\n");
+  Serial.print("Hej!\n");
   delay(1000);
 }
