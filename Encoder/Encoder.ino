@@ -8,11 +8,13 @@ void setup() {
 DDRD = ((0 << clkPin) | (0 << DT) | (0 << encoderButt)); // This pins are now inputs
 PORTD = ((1 << clkPin) | (1 << DT) | (1 << encoderButt)); //Sets the pins internal pullup resistors
 
-GIMSK = (1 << PCIE);
-sei();
 
-attachInterrupt(0, encoder, FALLING);
-attachInterrupt(1, encoderButton, FALLING);
+
+//attachInterrupt(0, encoder, FALLING);
+
+EIMSK = (1 << INT1) | (1 << INT0);
+EICRA = (1 << ISC11) | (1 << ISC01);
+sei();
 
 Serial.begin(9600);
 }
@@ -22,7 +24,7 @@ void loop() {
   delay(1000);
 }
 
-void encoder(){
+ISR(INT0_vect){
   if(digitalRead(DT) == LOW){
     Serial.println("Clockvise");
   }
@@ -31,6 +33,6 @@ void encoder(){
   }
 }
 
-void encoderButton(){
+ISR(INT1_vect){
   Serial.println("Clickde");
 }
